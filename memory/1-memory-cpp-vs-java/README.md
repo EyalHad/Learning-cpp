@@ -86,19 +86,22 @@ Now, use this terminal to run the C++ and Java programs one by one and watch the
 ### About the show-memory Script
 
 This script provides a live view of your system's available memory by reading from /proc/meminfo.
-
-`#!/bin/bash`
-
-How to free the buffers; from here: https://unix.stackexchange.com/q/87908/16569.
-
-`free && sync && echo 3 | sudo tee /proc/sys/vm/drop_caches && free`
 ```bash
+#!/bin/bash
+
 while :
 do
     cat /proc/meminfo | grep MemAvailable
     sleep 1   # wait for one second, and repeat
 done
 ```
+
+``
+How to free the buffers; from here: https://unix.stackexchange.com/q/87908/16569.
+
+free && sync && echo 3 | sudo tee /proc/sys/vm/drop_caches && free
+```
+
 
 Clearing Caches
 
